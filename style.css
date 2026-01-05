@@ -51,3 +51,9 @@ footer {
 #eventsCanvas {
   background-color: #ffffff;
 }
+
+
+#snapshotCanvas {
+  height: 260px;
+}
+

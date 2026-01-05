@@ -162,12 +162,66 @@
       <canvas id="eventsCanvas" width="600" height="300" class="w-100 border"></canvas>
     </div>
   </section>
+  <section class="py-4 bg-white border-top">
+    <div class="container">
+      <h2 class="h4 mb-3">Stage 3 — Audio API</h2>
+
+      <div class="d-flex flex-wrap gap-2 mb-3">
+        <button id="btnAudioStart" type="button" class="btn btn-success">Start recording</button>
+        <button id="btnAudioStop" type="button" class="btn btn-danger" disabled>Stop</button>
+        <a id="audioDownload" class="btn btn-outline-primary disabled" href="#" download="audio.webm">Download</a>
+      </div>
+
+      <audio id="audioPlayer" controls class="w-100"></audio>
+      <div id="audioStatus" class="small text-muted mt-2">Status: idle</div>
+    </div>
+  </section>
+
+  <section class="py-4 bg-white border-top">
+    <div class="container">
+      <h2 class="h4 mb-3">Stage 3 — Video API</h2>
+
+      <div class="row g-3">
+        <div class="col-12 col-lg-6">
+          <div class="border rounded p-3">
+            <div class="small text-muted mb-2">Live camera</div>
+            <video id="videoLive" class="w-100 rounded border" autoplay playsinline></video>
+
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <button id="btnCamOn" type="button" class="btn btn-primary">Camera ON</button>
+              <button id="btnCamOff" type="button" class="btn btn-outline-secondary" disabled>Camera OFF</button>
+              <button id="btnSnap" type="button" class="btn btn-outline-primary" disabled>Snapshot</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <div class="border rounded p-3">
+            <div class="small text-muted mb-2">Snapshot</div>
+            <canvas id="snapshotCanvas" class="w-100 rounded border"></canvas>
+
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <button id="btnVidStart" type="button" class="btn btn-success" disabled>Start video recording</button>
+              <button id="btnVidStop" type="button" class="btn btn-danger" disabled>Stop</button>
+              <a id="videoDownload" class="btn btn-outline-primary disabled" href="#" download="video.webm">Download</a>
+            </div>
+
+            <div class="small text-muted mt-3 mb-2">Recorded video</div>
+            <video id="videoRecorded" class="w-100 rounded border" controls></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <footer class="py-4 border-top bg-white mt-4">
     <div class="container small text-muted"></div>
   </footer>
   <script src="scripts/canvas.js"></script>
+  <script src="scripts/audio.js"></script>
+  <script src="scripts/video.js"></script>
+
 </body>
 
 </html>
