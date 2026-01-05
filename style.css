@@ -56,4 +56,8 @@ footer {
 #snapshotCanvas {
   height: 260px;
 }
+#map {
+  width: 100%;
+  height: 420px;
+}
 

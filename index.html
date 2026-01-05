@@ -5,44 +5,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Local Events</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
 <body>
   <nav class="navbar navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand fw-semibold" href="#">Local Events</a>
-      <form class="d-flex" role="search">
-        <select class="form-select" aria-label="Select city">
-          <option selected>Bucharest</option>
-          <option>Cluj-Napoca</option>
-          <option>Timișoara</option>
-          <option>Iași</option>
-          <option>Brașov</option>
-        </select>
-      </form>
+      <span class="navbar-brand fw-semibold">Local Events</span>
     </div>
   </nav>
 
-  <header class="py-4 bg-white border-bottom">
+  <header class="py-4 border-bottom bg-white">
     <div class="container">
-      <h1 class="h3">Find local events, workshops and festivals</h1>
+      <h1 class="h3 mb-0">Find local events near you</h1>
     </div>
   </header>
 
   <section class="py-3">
     <div class="container">
       <div class="row g-2">
-        <div class="col-12 col-sm-6 col-lg-3">
+        <div class="col-md-4">
           <label class="form-label" for="keywords">Keywords</label>
-          <input id="keywords" type="search" class="form-control" placeholder="ex: jazz, workshop" />
+          <input id="keywords" class="form-control" placeholder="ex: jazz, workshop">
         </div>
-        <div class="col-6 col-lg-3">
+        <div class="col-md-3">
           <label class="form-label" for="date">Date</label>
-          <input id="date" type="date" class="form-control" />
+          <input id="date" type="date" class="form-control">
         </div>
-        <div class="col-6 col-lg-3">
+        <div class="col-md-3">
           <label class="form-label" for="category">Category</label>
           <select id="category" class="form-select">
             <option selected>All</option>
@@ -52,176 +47,92 @@
             <option>Festival</option>
           </select>
         </div>
-        <div class="col-12 col-lg-3 d-grid">
+        <div class="col-md-2 d-grid">
           <label class="form-label invisible">&nbsp;</label>
-          <a href="#events" class="btn btn-primary">Show results</a>
+          <button id="btnFilter" class="btn btn-primary" type="button">Show results</button>
         </div>
       </div>
     </div>
   </section>
 
-  <main id="events" class="py-3">
+  <main class="py-3" id="events">
     <div class="container">
-      <h2 class="h4 mb-3">Events near you (demo)</h2>
+      <h2 class="h4 mb-3">Events near you</h2>
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
-        <div class="col">
-          <div class="card h-100">
-            <div class="event-img w-100"></div>
-            <div class="card-body">
-              <h5 class="card-title">Rock Night Live</h5>
-              <p class="card-text small text-muted">Saturday • 20:00–22:00 • Cluj-Napoca</p>
-              <p class="card-text">Local bands concert in an outdoor garden.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
-              <a href="#" class="btn btn-primary btn-sm">Join</a>
-            </div>
-          </div>
-        </div>
+      <div id="eventsGrid" class="row row-cols-1 row-cols-md-3 g-3"></div>
 
-        <div class="col">
-          <div class="card h-100">
-            <div class="event-img w-100"></div>
-            <div class="card-body">
-              <h5 class="card-title">All City Run – 5K</h5>
-              <p class="card-text small text-muted">Sunday • 09:00 • Bucharest</p>
-              <p class="card-text">Friendly city run for all levels. Charity event.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
-              <a href="#" class="btn btn-primary btn-sm">Join</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <div class="event-img w-100"></div>
-            <div class="card-body">
-              <h5 class="card-title">Street Food Festival</h5>
-              <p class="card-text small text-muted">12–13 Nov • Timișoara</p>
-              <p class="card-text">Tasty food, live music and a kids area. Free entry.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
-              <a href="#" class="btn btn-primary btn-sm">Join</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <div class="event-img w-100"></div>
-            <div class="card-body">
-              <h5 class="card-title">Jazz Night – Live Quartet</h5>
-              <p class="card-text small text-muted">Fri • 20:00 • Iași</p>
-              <p class="card-text">Relaxed evening with local jazz musicians.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
-              <a href="#" class="btn btn-primary btn-sm">Join</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <div class="event-img w-100"></div>
-            <div class="card-body">
-              <h5 class="card-title">Open Air DJ Session</h5>
-              <p class="card-text small text-muted">Sat • 12:30 • Brașov</p>
-              <p class="card-text">Chill beats by local DJs, picnic vibe.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
-              <a href="#" class="btn btn-primary btn-sm">Join</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <div class="event-img w-100"></div>
-            <div class="card-body">
-              <h5 class="card-title">Park Volunteering Day</h5>
-              <p class="card-text small text-muted">Sun • 09:00 • Bucharest</p>
-              <p class="card-text">Help clean the park and meet new friends.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
-              <a href="#" class="btn btn-primary btn-sm">Join</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <nav class="mt-4" aria-label="Page navigation">
+      <nav class="mt-4" aria-label="Events pagination">
         <ul class="pagination justify-content-center">
-          <li class="page-item disabled"><span class="page-link">Previous</span></li>
-          <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          <li class="page-item"><button id="btnPrev" class="page-link" type="button">Previous</button></li>
+          <li class="page-item"><span id="pageInfo" class="page-link">1 / 1</span></li>
+          <li class="page-item"><button id="btnNext" class="page-link" type="button">Next</button></li>
         </ul>
       </nav>
     </div>
   </main>
-  <section class="py-4 bg-white border-top">
-    <div class="container">
-      <h2 class="h4 mb-3">Canvas API</h2>
-      <p class="small text-muted">Chart with events per category.</p>
-      <canvas id="eventsCanvas" width="600" height="300" class="w-100 border"></canvas>
-    </div>
-  </section>
-  <section class="py-4 bg-white border-top">
-    <div class="container">
-      <h2 class="h4 mb-3">Stage 3 — Audio API</h2>
 
-      <div class="d-flex flex-wrap gap-2 mb-3">
-        <button id="btnAudioStart" type="button" class="btn btn-success">Start recording</button>
-        <button id="btnAudioStop" type="button" class="btn btn-danger" disabled>Stop</button>
-        <a id="audioDownload" class="btn btn-outline-primary disabled" href="#" download="audio.webm">Download</a>
-      </div>
-
-      <audio id="audioPlayer" controls class="w-100"></audio>
-      <div id="audioStatus" class="small text-muted mt-2">Status: idle</div>
+  <section class="py-4 border-top bg-white">
+    <div class="container">
+      <h2 class="h4 mb-2">Events Map</h2>
+      <p class="small text-muted mb-3">Click a marker to open the event details.</p>
+      <div id="map" class="border rounded"></div>
     </div>
   </section>
 
-  <section class="py-4 bg-white border-top">
-    <div class="container">
-      <h2 class="h4 mb-3">Stage 3 — Video API</h2>
 
-      <div class="row g-3">
-        <div class="col-12 col-lg-6">
-          <div class="border rounded p-3">
-            <div class="small text-muted mb-2">Live camera</div>
-            <video id="videoLive" class="w-100 rounded border" autoplay playsinline></video>
+  <div class="modal fade" id="eventModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
-            <div class="d-flex flex-wrap gap-2 mt-3">
-              <button id="btnCamOn" type="button" class="btn btn-primary">Camera ON</button>
-              <button id="btnCamOff" type="button" class="btn btn-outline-secondary" disabled>Camera OFF</button>
-              <button id="btnSnap" type="button" class="btn btn-outline-primary" disabled>Snapshot</button>
-            </div>
+        <div class="modal-header">
+          <h5 id="modalTitle" class="modal-title">Event</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <p id="modalInfo" class="text-muted mb-3"></p>
+          <button id="btnShowOnMap" type="button" class="btn btn-outline-primary btn-sm mb-3">
+            Show on map
+          </button>
+
+          <hr>
+
+          <h6 class="mb-2">Video preview (Video API)</h6>
+          <video id="videoLive" class="w-100 border rounded mb-2" autoplay playsinline muted></video>
+
+          <div class="small text-muted mb-2">Recorded video</div>
+          <video id="videoRecorded" class="w-100 border rounded mb-2" controls></video>
+
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <button id="btnCamOn" class="btn btn-sm btn-primary" type="button">Camera ON</button>
+            <button id="btnCamOff" class="btn btn-sm btn-outline-secondary" type="button" disabled>OFF</button>
+            <button id="btnVidStart" class="btn btn-sm btn-success" type="button" disabled>Start recording</button>
+            <button id="btnVidStop" class="btn btn-sm btn-danger" type="button" disabled>Stop</button>
+          </div>
+
+          <h6 class="mb-2">Audio note (Audio API)</h6>
+          <audio id="audioPlayer" controls class="w-100 mb-2"></audio>
+
+          <div class="d-flex flex-wrap gap-2">
+            <button id="btnAudioStart" class="btn btn-sm btn-success" type="button">Record</button>
+            <button id="btnAudioStop" class="btn btn-sm btn-danger" type="button" disabled>Stop</button>
           </div>
         </div>
 
-        <div class="col-12 col-lg-6">
-          <div class="border rounded p-3">
-            <div class="small text-muted mb-2">Snapshot</div>
-            <canvas id="snapshotCanvas" class="w-100 rounded border"></canvas>
-
-            <div class="d-flex flex-wrap gap-2 mt-3">
-              <button id="btnVidStart" type="button" class="btn btn-success" disabled>Start video recording</button>
-              <button id="btnVidStop" type="button" class="btn btn-danger" disabled>Stop</button>
-              <a id="videoDownload" class="btn btn-outline-primary disabled" href="#" download="video.webm">Download</a>
-            </div>
-
-            <div class="small text-muted mt-3 mb-2">Recorded video</div>
-            <video id="videoRecorded" class="w-100 rounded border" controls></video>
-          </div>
-        </div>
       </div>
     </div>
-  </section>
+  </div>
 
+  <footer class="py-3 border-top text-center text-muted bg-white">
 
-  <footer class="py-4 border-top bg-white mt-4">
-    <div class="container small text-muted"></div>
   </footer>
-  <script src="scripts/canvas.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="scripts/map.js"></script>
   <script src="scripts/audio.js"></script>
   <script src="scripts/video.js"></script>
-
+  <script src="scripts/app.js"></script>
 </body>
 
 </html>
